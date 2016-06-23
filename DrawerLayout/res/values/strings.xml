@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Eco Implant</string>
+    <string name="title_activity_main">Eco Implant</string>
+    <string name="action_settings">Sobre</string>
+    <string name="drawer_open">Aberto</string>
+    <string name="drawer_close">Fechado</string>
+    <string name="title_activity_adapter_drawer">Eco Implant</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
