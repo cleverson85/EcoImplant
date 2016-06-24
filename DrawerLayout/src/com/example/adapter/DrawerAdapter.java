@@ -1,11 +1,14 @@
 package com.example.adapter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
+import com.example.util.ListaModelo;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +19,9 @@ import android.widget.TextView;
 public class DrawerAdapter extends BaseAdapter{
 
 	private MainActivity mainActivity;
-	private TreeMap<Integer, String> item;
+	private List item;
 	
-	public DrawerAdapter(MainActivity main, TreeMap<Integer, String> item) {
+	public DrawerAdapter(MainActivity main, List item) {
 		this.mainActivity = main;
 		this.item = item;
 	}
@@ -47,10 +50,10 @@ public class DrawerAdapter extends BaseAdapter{
 		View view = mainActivity.getLayoutInflater().inflate(R.layout.text_menu, null);
 		
 		TextView text = (TextView) view.findViewById(R.id.textView1);
-		text.setText(item.values().toArray()[position].toString());
+		text.setText(((ListaModelo)item.get(position)).getDescricao());
 		
 		ImageView ico = (ImageView) view.findViewById(R.id.imageView1);
-		ico.setImageResource(R.drawable.ic_location);
+		ico.setImageResource(((ListaModelo)item.get(position)).getIdImag());
 		
 		return view;
 	}

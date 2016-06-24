@@ -5,5 +5,13 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="C:/Users/cleve/AppData/Local/Android/sdk/platforms/android-22/android.jar" sourcepath="D:/Desenvolvimento/Android/Android-SDK/sources/android-22">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Users/cleve/AppData/Local/Android/Sdk/docs/reference"/>
+		</attributes>
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

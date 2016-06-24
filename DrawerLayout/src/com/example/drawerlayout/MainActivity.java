@@ -1,10 +1,12 @@
 package com.example.drawerlayout;
 
+import java.util.List;
 import java.util.TreeMap;
 
 import com.example.adapter.DrawerAdapter;
 import com.example.fragment.FragmentMain;
 import com.example.util.ListaMenu;
+import com.example.util.ListaModelo;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -25,7 +27,7 @@ public class MainActivity extends Activity {
 	private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private ListView listView;
-    private TreeMap<Integer, String> item;
+    private List item;
     
     @Override
     protected void onResume() {
@@ -71,21 +73,18 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView parent, View view, int position, long id) {
-				position = (Integer)item.keySet().toArray()[position];
+				position = ((ListaModelo)item.get(position)).getIdLayout();
 				selectedItem(position);
 			}
 		});
 	}
 
 	protected void selectedItem(int position) {
-		
 		android.app.FragmentManager fragTransaction;
 		android.app.Fragment frag;
 	    
 		setFragmentMenu(position);
-	
-		drawerToggle.setDrawerIndicatorEnabled(true); //disable "hamburger to arrow" drawable
-        drawerToggle.setHomeAsUpIndicator(R.drawable.ic_burguer);
+		changeIconBurguer(true);
 		
 		listView.setItemChecked(position, true);
 		drawerLayout.closeDrawer(listView);
