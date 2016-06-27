@@ -13,6 +13,12 @@ public class ListaModelo {
 		this.descricao = descricao;
 	}
 	
+	public ListaModelo(int idImage, String descricao) {
+		super();
+		this.idImage = idImage;
+		this.descricao = descricao;
+	}
+	
 	public int getIdLayout() {
 		return idLayout;
 	}

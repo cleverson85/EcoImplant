@@ -8,6 +8,31 @@
     <string name="drawer_close">Fechado</string>
     <string name="title_activity_adapter_drawer">Eco Implant</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <string name="desc_sobre">Este aplicativo foi construido para o 1° Grand Prix de inovação da ESCOLA SENAI DA CONSTRUÇÂO - CUIABÁ/MT.\nNeste evento nosso 
+        aplicativo levou o terceiro lugar geral, \npassando assim para a próxima fase que é o projeto integrador. 
+		\n
+		\n
+		Criadores:\n
+		Anyelle Duarte\n
+		Erica Barbosa\n
+		Karson Ortis\n
+		Pablo Terceiros\n
+		\n
+		\n
+		Desenvolvedores:\n
+		Anyelle Duarte\n
+		Cleverson Queiroz\n
+		\n
+		\n
+		Orientadores:\n
+		Luciana Ferreira\n
+		Carlos André\n
+		\n
+		\n
+		Incentivadores:\n
+		ESCOLA SENAI DA CONSTRUÇÂO\n
+		SISTEMA FIEMT\n
+    </string>
 
 </resources>

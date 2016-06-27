@@ -1,12 +1,10 @@
 package com.example.drawerlayout;
 
-import java.util.List;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
-import com.example.adapter.DrawerAdapter;
+import com.example.adapter.DrawerAdapterSub;
 import com.example.fragment.FragmentMain;
 import com.example.util.ListaMenu;
-import com.example.util.ListaModelo;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -14,37 +12,36 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
 	private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private ListView listView;
-    private List item;
-    
-    @Override
-    protected void onResume() {
-    	// TODO Auto-generated method stub
-    	super.onResume();
-    }
+    private ExpandableListView listView;
+    private ArrayList item, subItem;
+    private boolean isAtive = true;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		this.item =  ListaMenu.loadItemMenu();
+		this.item =  (ArrayList) ListaMenu.loadItemMenuSemId();
+		this.subItem =  (ArrayList) ListaMenu.loadItemMenuSub();
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		listView = (ListView)findViewById(R.id.left_drawer);
-		listView.setAdapter(new DrawerAdapter(this, item));
+		listView = (ExpandableListView) findViewById(R.id.left_drawer);
+		
+		listView.setGroupIndicator(null);
+		//listView.setChildIndicator(null);
+		
+		
+		listView.setAdapter(new DrawerAdapterSub(this, item, subItem));
 				
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_burguer, 
 				R.string.drawer_open, R.string.drawer_close){
@@ -69,20 +66,25 @@ public class MainActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(false); //retira icone da action bar
         
-        listView.setOnItemClickListener(new OnItemClickListener() {
+        /*listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView parent, View view, int position, long id) {
 				position = ((ListaModelo)item.get(position)).getIdLayout();
 				selectedItem(position);
 			}
-		});
+		});*/
 	}
-
+	
 	protected void selectedItem(int position) {
 		android.app.FragmentManager fragTransaction;
 		android.app.Fragment frag;
 	    
+		isAtive = false;
+		if(position == R.layout.activity_main){
+			isAtive = true;
+		}
+		
 		setFragmentMenu(position);
 		changeIconBurguer(true);
 		
@@ -113,16 +115,15 @@ public class MainActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			isAtive = false;
 			setFragmentMenu(R.layout.fragment_sobre);
 		}
 		
 		drawerToggle.setDrawerIndicatorEnabled(true);
 		if (drawerToggle.onOptionsItemSelected(item)) {
-			
 			if(!drawerLayout.isDrawerOpen(listView)){
 				changeIconBurguer(false);
 			}
-			return true;
         }
 		return super.onOptionsItemSelected(item);
 	}
@@ -155,9 +156,16 @@ public class MainActivity extends Activity {
         if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             changeIconBurguer(true);
-        } else {
-            super.onBackPressed();
         }
+        
+		if(!isAtive){
+			setFragmentMenu(R.layout.activity_main);
+			Toast.makeText(this, "Pressione mais uma vez para fechar o aplivativo.", Toast.LENGTH_SHORT).show();
+			isAtive = true;
+		}
+		else {
+			super.onBackPressed();
+		}
     }
     
     private void changeIconBurguer(boolean change) {

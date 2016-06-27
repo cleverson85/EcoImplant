@@ -18,7 +18,6 @@ public class FragmentMain extends Fragment{
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
-		
 		view = inflater.inflate(layout, null);
 		return view;
 	}

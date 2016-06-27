@@ -1,28 +1,25 @@
 package com.example.adapter;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
 import com.example.util.ListaModelo;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DrawerAdapter extends BaseAdapter{
+public class DrawerAdapter extends BaseAdapter {
 
 	private MainActivity mainActivity;
-	private List item;
+	private List<Object> item, subItem;
 	
-	public DrawerAdapter(MainActivity main, List item) {
-		this.mainActivity = main;
+	public DrawerAdapter(MainActivity mainActivity, List item) {
+		this.mainActivity = mainActivity;
 		this.item = item;
 	}
 	
@@ -57,5 +54,4 @@ public class DrawerAdapter extends BaseAdapter{
 		
 		return view;
 	}
-
 }
