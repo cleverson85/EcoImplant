@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.example.adapter.DrawerAdapterSub;
 import com.example.fragment.FragmentMain;
 import com.example.util.ListaMenu;
+import com.example.util.ModeloGeral;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -12,10 +13,15 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -23,7 +29,7 @@ public class MainActivity extends Activity {
 	private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private ExpandableListView listView;
-    private ArrayList item, subItem;
+    private ArrayList listaGeral;
     private boolean isAtive = true;
     
 	@Override
@@ -31,17 +37,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		this.item =  (ArrayList) ListaMenu.loadItemMenuSemId();
-		this.subItem =  (ArrayList) ListaMenu.loadItemMenuSub();
-		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		listView = (ExpandableListView) findViewById(R.id.left_drawer);
-		
-		listView.setGroupIndicator(null);
+
 		//listView.setChildIndicator(null);
-		
-		
-		listView.setAdapter(new DrawerAdapterSub(this, item, subItem));
+		listaGeral = new ListaMenu(true).getGrupo();
+		listView.setGroupIndicator(null);
+		listView.setAdapter(new DrawerAdapterSub(this, listaGeral));
 				
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_burguer, 
 				R.string.drawer_open, R.string.drawer_close){
@@ -66,14 +68,19 @@ public class MainActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(false); //retira icone da action bar
         
-        /*listView.setOnItemClickListener(new OnItemClickListener() {
-
+        listView.setOnGroupClickListener(new OnGroupClickListener() {
+			
 			@Override
-			public void onItemClick(AdapterView parent, View view, int position, long id) {
-				position = ((ListaModelo)item.get(position)).getIdLayout();
-				selectedItem(position);
+			public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+				
+				ModeloGeral m = (ModeloGeral) listaGeral.get(groupPosition);
+				
+				if(m.getFilho() == null){
+					selectedItem(m.getPai().getIdLayout());
+				}
+				return false;
 			}
-		});*/
+		});
 	}
 	
 	protected void selectedItem(int position) {

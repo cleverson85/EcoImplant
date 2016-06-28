@@ -13,7 +13,8 @@
         android:layout_marginTop="5dp"
 		android:layout_gravity="center_vertical"
         android:textColor="#939393"
-        android:textSize="15dp"
-        android:textStyle="normal" />
+        android:textSize="18dp"
+        android:textStyle="normal" 
+        android:selectAllOnFocus="true"/>
 
 </LinearLayout>

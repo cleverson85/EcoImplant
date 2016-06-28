@@ -1,34 +1,32 @@
 package com.example.adapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
-import com.example.util.ListaModelo;
+import com.example.util.ListaModeloSub;
+import com.example.util.ModeloGeral;
 
-import android.app.Activity;
-import android.view.LayoutInflater;
+import android.R.color;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressWarnings("unchecked")
 public class DrawerAdapterSub extends BaseExpandableListAdapter {
 
-	public ArrayList<ListaModelo> item, itemTemp;
-	public ArrayList<Object> subItem = new ArrayList<Object>();
-	public LayoutInflater minflater;
-	public Activity activity;
+	public List<ListaModeloSub> itemTemp;
 	private final MainActivity mainActivity;
+	private ArrayList<ModeloGeral> itemGeral;
 
-	public DrawerAdapterSub(MainActivity mainActivity, ArrayList<ListaModelo> item, ArrayList<Object> subItem) {
+	public DrawerAdapterSub(MainActivity mainActivity, ArrayList<ModeloGeral> itemGeral) {
 		this.mainActivity = mainActivity;
-		this.item = item;
-		this.subItem = subItem;
+		this.itemGeral = itemGeral;
 	}
 
 	@Override
@@ -43,7 +41,12 @@ public class DrawerAdapterSub extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return ((ArrayList<String>) subItem.get(groupPosition)).size();
+		try {
+			return itemGeral.get(groupPosition).getFilho().size();
+		}
+		catch(Exception e) {
+			return 0;
+		}
 	}
 
 	@Override
@@ -53,7 +56,7 @@ public class DrawerAdapterSub extends BaseExpandableListAdapter {
 
 	@Override
 	public int getGroupCount() {
-		return item.size();
+		return itemGeral.size();
 	}
 
 	@Override
@@ -83,38 +86,44 @@ public class DrawerAdapterSub extends BaseExpandableListAdapter {
 	
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
+													View convertView, ViewGroup parent) {
 		
 		View view = mainActivity.getLayoutInflater().inflate(R.layout.text_menu, null);
 		
 		TextView text = (TextView) view.findViewById(R.id.textView1);
-		text.setText(((ListaModelo)item.get(groupPosition)).getDescricao());
+		text.setText(itemGeral.get(groupPosition).getPai().getDescricao());
 		
 		ImageView ico = (ImageView) view.findViewById(R.id.imageView1);
-		ico.setImageResource(((ListaModelo)item.get(groupPosition)).getIdImag());
+		ico.setImageResource(itemGeral.get(groupPosition).getPai().getIdImag());
 		
-		view.setTag(item.get(groupPosition));
+		if(isExpanded) {
+	        view.setBackgroundResource(R.color.group_selected);
+	    }
+		else {
+	        view.setBackgroundColor(color.transparent);
+	    }
 		
+		view.setTag(itemGeral.get(groupPosition));
 		return view;
 	}
 
 	@Override
 	public View getChildView(int groupPosition, final int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) {
+								final boolean isLastChild, View convertView, ViewGroup parent) {
 		
-		itemTemp = (ArrayList<ListaModelo>) subItem.get(groupPosition);
-		View view = mainActivity.getLayoutInflater().inflate(R.layout.text_menu_item, null);
+		final View view = mainActivity.getLayoutInflater().inflate(R.layout.text_menu_item, null);
 		
 		TextView text = (TextView) view.findViewById(R.id.textView2);
-		text.setText("  " + itemTemp.get(childPosition));
+		text.setText(itemGeral.get(groupPosition).getFilho().get(childPosition).getDescricao());
 		
 		view.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
 			}
 		});
-		view.setTag(item.get(childPosition));
+		
+		view.setBackgroundResource(R.color.group_selected);
+		view.setTag(itemGeral.get(groupPosition).getFilho());
 		return view;
 	}
 }
