@@ -2,10 +2,11 @@ package com.example.drawerlayout;
 
 import java.util.ArrayList;
 
-import com.example.adapter.DrawerAdapterSub;
+import com.example.adapter.DrawerAdapterAnimated;
 import com.example.fragment.FragmentMain;
 import com.example.util.ListaMenu;
 import com.example.util.ModeloGeral;
+import com.example.widget.AnimatedExpandableListView;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -13,22 +14,21 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.Toast;
+
 
 public class MainActivity extends Activity {
 	
 	private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private ExpandableListView listView;
+    private AnimatedExpandableListView listView;
     private ArrayList listaGeral;
     private boolean isAtive = true;
     
@@ -38,12 +38,11 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		listView = (ExpandableListView) findViewById(R.id.left_drawer);
+		listView = (AnimatedExpandableListView) findViewById(R.id.left_drawer);
 
-		//listView.setChildIndicator(null);
-		listaGeral = new ListaMenu(true).getGrupo();
+		listaGeral = new ListaMenu().getGrupo();
 		listView.setGroupIndicator(null);
-		listView.setAdapter(new DrawerAdapterSub(this, listaGeral));
+		listView.setAdapter(new DrawerAdapterAnimated(this, listaGeral));
 				
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_burguer, 
 				R.string.drawer_open, R.string.drawer_close){
@@ -69,33 +68,56 @@ public class MainActivity extends Activity {
         getActionBar().setDisplayShowHomeEnabled(false); //retira icone da action bar
         
         listView.setOnGroupClickListener(new OnGroupClickListener() {
-			
+        	int groupPositionTemp = 0;
+        	
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 				
 				ModeloGeral m = (ModeloGeral) listaGeral.get(groupPosition);
 				
 				if(m.getFilho() == null){
+					listView.collapseGroupWithAnimation(groupPositionTemp);
 					selectedItem(m.getPai().getIdLayout());
 				}
-				return false;
+				else {
+					if (listView.isGroupExpanded(groupPosition)) {
+	                    listView.collapseGroupWithAnimation(groupPosition);
+	                } 
+					else {
+	                    listView.expandGroupWithAnimation(groupPosition);
+	                    if(listView.isGroupExpanded(groupPositionTemp) && groupPositionTemp != groupPosition){
+	                    	listView.collapseGroupWithAnimation(groupPositionTemp);
+	                    }
+	                }
+					groupPositionTemp = groupPosition;
+				}
+				return true;
 			}
 		});
+        
+//        listView.setOnChildClickListener(new OnChildClickListener() {
+//			
+//			@Override
+//			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+//				
+//				ModeloGeral m = (ModeloGeral) listaGeral.get(groupPosition);
+//				Log.i("ciclo", "setOnChildClickListener");
+//				selectedItem(m.getFilho().get(childPosition).getIdLayout());
+//				return true;
+//			}
+//		});
 	}
 	
-	protected void selectedItem(int position) {
-		android.app.FragmentManager fragTransaction;
-		android.app.Fragment frag;
-	    
+	protected void selectedItem(int idLayout) {
 		isAtive = false;
-		if(position == R.layout.activity_main){
+		if(idLayout == R.layout.activity_main){
 			isAtive = true;
 		}
 		
-		setFragmentMenu(position);
+		setFragmentMenu(idLayout);
 		changeIconBurguer(true);
 		
-		listView.setItemChecked(position, true);
+		listView.setItemChecked(idLayout, true);
 		drawerLayout.closeDrawer(listView);
 	}
 

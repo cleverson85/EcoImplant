@@ -13,9 +13,9 @@ public class ListaModelo {
 		this.descricao = descricao;
 	}
 	
-	public ListaModelo(int idImage, String descricao) {
+	public ListaModelo(int idLayout, String descricao) {
 		super();
-		this.idImage = idImage;
+		this.idLayout = idLayout;
 		this.descricao = descricao;
 	}
 	

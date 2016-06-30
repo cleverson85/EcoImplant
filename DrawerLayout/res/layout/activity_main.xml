@@ -22,12 +22,14 @@
     
     
     <!-- The navigation drawer -->
-    <ExpandableListView android:id="@+id/left_drawer"
-        android:layout_width="220dp"
+    <com.example.widget.AnimatedExpandableListView 
+        android:id="@+id/left_drawer"
+        android:layout_width="270dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
         android:dividerHeight="1dp"
-        android:background="#0c5655" />
+        android:background="#0c5655"
+        android:groupIndicator="@drawable/selector_list_item" />
     
 </android.support.v4.widget.DrawerLayout>

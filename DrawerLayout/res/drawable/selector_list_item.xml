@@ -2,8 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
    android:exitFadeDuration="@android:integer/config_mediumAnimTime">
 
-   <item android:drawable="@android:color/holo_blue_bright" android:state_pressed="true"/>
-   <item android:drawable="@android:color/holo_blue_light" android:state_selected="true"/>
-   <item android:drawable="@android:color/holo_blue_dark" android:state_activated="true"/>
+   <item android:drawable="@android:color/holo_blue_bright" android:state_pressed="true" />
+   <item android:drawable="@android:color/holo_blue_light" android:state_selected="true" />
+   <item android:drawable="@android:color/holo_blue_dark" android:state_activated="true" />
 
+   <item android:drawable="@drawable/ic_action_expand" android:state_expanded="true" />
+   <item android:drawable="@drawable/ic_action_collapse" android:state_expanded="true" />
 </selector>

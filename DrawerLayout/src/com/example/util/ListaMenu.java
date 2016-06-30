@@ -12,31 +12,17 @@ public class ListaMenu {
 	private ArrayList<ListaModeloSub> item = new ArrayList<ListaModeloSub>();
 	private ArrayList<ModeloGeral> itemGeral;	
 	
-	public ListaMenu(boolean id) {
+	public ListaMenu() {
 		
-		if(id){
-			grupo.add(new ListaModelo(R.layout.activity_main, R.drawable.ic_home, "Home"));
-			grupo.add(new ListaModelo(R.layout.fragment_consc, R.drawable.ic_conscient, "Conscientização"));
-			grupo.add(new ListaModelo(R.layout.fragment_descarte, R.drawable.ic_descarte, "Descarte"));
-			grupo.add(new ListaModelo(R.layout.fragment_locais, R.drawable.ic_location, "Locais"));
-			grupo.add(new ListaModelo(R.layout.fragment_nreciclavel, R.drawable.ic_naoreciclav, "Não Recicláveis"));
-			grupo.add(new ListaModelo(R.layout.fragment_jogos, R.drawable.ic_jogos, "Jogos"));
-			grupo.add(new ListaModelo(R.layout.fragment_reuso, R.drawable.ic_recycle, "Reutilizar"));
-			grupo.add(new ListaModelo(R.layout.fragment_tecnica, R.drawable.ic_gear, "Ass. Técnica"));
-			grupo.add(new ListaModelo(R.layout.fragment_sugest, R.drawable.ic_sugest, "Sugestões"));
-		}
-		else 
-		{
-			grupo.add(new ListaModelo(R.drawable.ic_home, "Home"));
-			grupo.add(new ListaModelo(R.drawable.ic_conscient, "Conscientização"));
-			grupo.add(new ListaModelo(R.drawable.ic_descarte, "Descarte"));
-			grupo.add(new ListaModelo(R.drawable.ic_location, "Locais"));
-			grupo.add(new ListaModelo(R.drawable.ic_naoreciclav, "Não Recicláveis"));
-			grupo.add(new ListaModelo(R.drawable.ic_jogos, "Jogos"));
-			grupo.add(new ListaModelo(R.drawable.ic_recycle, "Reutilizar"));
-			grupo.add(new ListaModelo(R.drawable.ic_gear, "Ass. Técnica"));
-			grupo.add(new ListaModelo(R.drawable.ic_sugest, "Sugestões"));
-		}
+		grupo.add(new ListaModelo(R.layout.activity_main, R.drawable.ic_home, "Home"));
+		grupo.add(new ListaModelo(R.layout.fragment_consc, R.drawable.ic_conscient, "Conscientização"));
+		grupo.add(new ListaModelo(R.layout.fragment_descarte, R.drawable.ic_descarte, "Descarte"));
+		grupo.add(new ListaModelo(R.layout.fragment_locais, R.drawable.ic_location, "Locais"));
+		grupo.add(new ListaModelo(R.layout.fragment_nreciclavel, R.drawable.ic_naoreciclav, "Não Recicláveis"));
+		grupo.add(new ListaModelo(R.layout.fragment_jogos, R.drawable.ic_jogos, "Jogos"));
+		grupo.add(new ListaModelo(R.layout.fragment_reuso, R.drawable.ic_recycle, "Reutilizar"));
+		grupo.add(new ListaModelo(R.layout.fragment_tecnica, R.drawable.ic_gear, "Ass. Técnica"));
+		grupo.add(new ListaModelo(R.layout.fragment_sugest, R.drawable.ic_sugest, "Sugestões"));
 		
 		itemGeral = loadItemMenuSub();
 	}
@@ -58,8 +44,8 @@ public class ListaMenu {
 		 * Add Data For Conscientizar - 1
 		 */
 		item = new ArrayList<ListaModeloSub>();
-		item.add(new ListaModeloSub(0, "Artigos"));
-		item.add(new ListaModeloSub(0, "Videos"));
+		item.add(new ListaModeloSub(R.layout.fragment_artigos, "Artigos"));
+		item.add(new ListaModeloSub(R.layout.fragment_videos, "Videos"));
 		
 		itemGeral.add(new ModeloGeral(grupo.get(1), item));
 		
