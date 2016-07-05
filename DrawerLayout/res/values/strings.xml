@@ -7,32 +7,88 @@
     <string name="drawer_open">Aberto</string>
     <string name="drawer_close">Fechado</string>
     <string name="title_activity_adapter_drawer">Eco Implant</string>
-    <string name="title_activity_splash_screen">SplashScreenActivity</string>
-    
+    <string name="error_player">Houve um erro ao tentar inicializar o YouTubePlayer (%1$s)</string>
+
+    <string-array name="materiais_coleta">
+        <item>Plástico</item>
+        <item>Metais</item>
+        <item>Vidro</item>
+        <item>Papel</item>
+        <item>Outros</item>
+    </string-array>
+
     <string name="desc_sobre">Este aplicativo foi construido para o 1° Grand Prix de inovação da ESCOLA SENAI DA CONSTRUÇÂO - CUIABÁ/MT.\nNeste evento nosso 
         aplicativo levou o terceiro lugar geral, \npassando assim para a próxima fase que é o projeto integrador. 
 		\n
-		\n
-		Criadores:\n
+		\n <b>Criadores:</b> \n
 		Anyelle Duarte\n
 		Erica Barbosa\n
 		Karson Ortis\n
 		Pablo Terceiros\n
 		\n
-		\n
-		Desenvolvedores:\n
+		\n <b>Desenvolvedores:</b> \n
 		Anyelle Duarte\n
 		Cleverson Queiroz\n
 		\n
-		\n
-		Orientadores:\n
+		\n <b>Orientadores:</b> \n
 		Luciana Ferreira\n
 		Carlos André\n
 		\n
-		\n
-		Incentivadores:\n
+		\n <b>Incentivadores:</b>\n
 		ESCOLA SENAI DA CONSTRUÇÂO\n
-		SISTEMA FIEMT\n
-    </string>
+		SISTEMA FIEMT\n</string>
+    <string name="title_activity_activity_desenhar">Rabiscos</string>
+    <string name="contatos"><b>COOREPAM</b> \n
+			Contato: (65) 99203-9570 \n
+			Email: coorepam@gmail.com \n
+			End: Rua 59, Quadra 236, Lote 01 \n
+			Bairro: Pedra 90, Cuiabá/MT \n
+			Resíduos Recicláveis: Embalagens Longa vida, metais, papéis, \n plásticos e vidro. \n
+			\n
+			\n
+			\n <b>ECOAMBIENTAL</b> \n
+			Contato: (65) 9290-3934 \n
+			End: Rodovia Emanoel Pinheiro, KM 04 \n
+			Bairro: Jardim Vitória, Cuiabá/MT \n
+			Site: http://ecoambientalmt.com \n
+			Resíduos Recicláveis: Resíduos em geral da construção civil \n</string>
+    <string name="conscientizar">			O lixo jogado fora pode ser transformado e transformas à vida das pessoas. Mas, não basta ser lixo, é necessário saber se pode ser reciclado ou reaproveitado. \n
+			Esse reaproveitamento consiste em transformar um determinado material já beneficiado em outro. \n 
+			No entanto, o papel é um exemplo de material que pode ser reaproveita. \n
+			Nesse sentido, ressalta-se a necessidade de ser realizada a coleta seletiva que pode ser implanta em uma escola, um bairro e empresa, e assim facilitando a vida dos catadores de lixo que sobrevivem desta atividade e muitas vezes é a única fonte de renda para a sustento familiar. \n
+			No que se refere às empresas é interessante enfatizar a importância delas enquanto não-governamentais que exercem papel fundamental em relação a conscientização ecológica, além de transformar o lixo juntamente com a própria população local, no entanto, os lucros acarinhados com os produtos transformador são revertido para a própria comunidade. \n
+			Portanto, o processo de reciclagem do lixo contribui como fonte de renda, além da conscientização ecológica e assim minimizando a degradação ambiental. No entanto, o referido processo proporciona enormes vantagens, no âmbito social, econômica e ambiental. \n</string>
+    <string name="link_con">Leia mais...<a href="http://www.webartigos.com/artigos/de-que-forma-a-reciclagem-do-lixo-transforma-a-vida-das-pessoas-no-brasil/57871/#ixzz4DJ58ac4x">http://www.webartigos.com/artigos/de-que-forma-a-reciclagem-do-lixo-transforma-a-vida-das-pessoas-no-brasil/57871/#ixzz4DJ58ac4x</a></string>
+    <string name="pq_reutilizar">	    A reutilização também é uma forma de redução, pois os produtos permanecem mais tempo em uso antes de serem descartados. \n
+		Consiste no aproveitamento de produtos, objetos ou embalagens sem que estes sofram quaisquer tipos de alterações ou processamentos complexos (só passam, por exemplo, por limpeza). \n 
+		Existem inúmeras formas de reutilização, dependendo da criatividade do gerador. Os principais resíduos que podem ser reutilizados são embalagens e roupas, modificando sua aparência e finalidade. Faça de uma garrafa um vaso de plantas, ou de uma camisa velha um pano de chão. \n
+		Ainda que não se encontre uma forma imediata para a reutilização, muitos produtos devem ser considerados como reutilizáveis e então serem guardados para um momento posterior. \n
+		Ao invés de jogar fora algum objeto “velho” e “sem valor” procure uma instituição de caridade que com certeza fará bom uso de qualquer doação. \n</string>
+    <string name="link_reutilizar" formatted="false">Leia mais...<a href="http://reciclandooplaneta.webnode.com.br/reciclagem/lixo/reutiliza%C3%A7%C3%A3o%20do%20lixo/">http://reciclandooplaneta.webnode.com.br/reciclagem/lixo/reutiliza%C3%A7%C3%A3o%20do%20lixo/</a></string>
+    <string name="como_descartar" formatted="false">	    O nosso país produz cerca de 260 mil toneladas de lixo por dia e pior do que esse número, que dá para observar pela quantidade de resíduos que colocamos em sacos diariamente, somente 2% do total, cerca de 5.200 toneladas,
+ 		é reciclado. \n E para onde vai o resto? \n 
+ 		75% vai para os lixões, 13% vai para os aterros controlados e 10 por cento vai para os aterros sanitários. \n 
+ 		A melhor maneira para mudar esse quadro é primeiro produzindo menos lixo e segundo, reciclando tudo o que dá para reciclar. \n 
+ 		Porém, para que a reciclagem seja possível é preciso descartar o lixo da forma correta. \n 
+ 		São atitudes que ajudarão a preservar o meio ambiente e reduzir a quantidade de lixões que só provocam doenças.
+ 		\n</string>
+    <string name="link_como_descartar">Leia mais...<a href="http://meioambiente.culturamix.com/lixo/formas-de-descartar-o-lixo">http://meioambiente.culturamix.com/lixo/formas-de-descartar-o-lixo</a></string>
+    <string name="oq_fazer">	    Reciclagem mantém o lixo fora dos aterros e ajuda a preservar a beleza natural da sua cidade. \n Simplesmente separando garrafas 
+	    de plástico, potes de vidro e latas de alumínio da sua lata de lixo você já estará fazendo a 
+	    diferença na quantidade de lixo que se acumula em todo país. \n No entanto, nem tudo pode ser jogado em sua lixeira. \n Segue a lista de 
+	    alguns materiais não recicláveis que não devem ser incluídos no sue processo de reciclagem diária em casa.
+ 		\n </string>
+    <string name="link_oq_fazer">Leia mais...<a href="http://www.reciclagemnobrasil.com/o-que-fazer-com-materiais-nao-reciclaveis/">http://www.reciclagemnobrasil.com/o-que-fazer-com-materiais-nao-reciclaveis/</a></string>
+    <string name="toxicos">		Todo o material que não queremos ou que não precisamos mais tem um destino certo: o lixo. \n Acontece que nem sempre tomamos o cuidado correto com o nosso lixo e sofremos as consequências, em muitos casos, sem nem saber. \n
+ 		Pois é, sempre que depositamos um objeto no saco do lixo que temos em casa, esse pequeno objeto se não tiver um destino certo, pode causar danos ao meio ambiente, alguns são danos mínimos, porém um grande número desses
+ 		danos menores, vai levar à um imenso problema.
+ 		\n </string>
+    <string name="link_toxicos">Leia mais...<a href="http://meioambiente.culturamix.com/lixo/lixo-toxico-o-que-e-e-como-evitar">http://meioambiente.culturamix.com/lixo/lixo-toxico-o-que-e-e-como-evitar</a></string>
+    <string name="lei_1">Leia mais...<a href="http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixo/">http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixo/</a></string>
+    <string name="lei_2">Leia mais...<a href="http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixo-2/">http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixo-2/</a></string>
+    <string name="lei_3">Leia mais...<a href="http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixoparte3/">http://www.recicloteca.org.br/legislacao-ambiental/as-leis-do-lixoparte3/</a></string>
+    <string name="title_activity_activity_videos_reutilizar">ActivityVideosReutilizar</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity_rabiscos">ActivityRabiscos</string>
 
 </resources>

@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
-import com.example.util.ListaModeloSub;
-import com.example.util.ModeloGeral;
+import com.example.modelo.ListaModeloSub;
+import com.example.modelo.ModeloGeral;
 
 import android.R.color;
 import android.util.Log;

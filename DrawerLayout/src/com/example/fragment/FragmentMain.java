@@ -1,24 +1,33 @@
 package com.example.fragment;
 
+import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
+import com.example.widget.FragmentInflatorFactory;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class FragmentMain extends Fragment{
+public class FragmentMain extends Fragment {
 	
 	private int layout;
-	View view;
+	private MainActivity mainActivity;
 	
-	public FragmentMain(int layout) {
+	public FragmentMain(int layout, MainActivity mainActivity) {
 		this.layout = layout;
+		this.mainActivity = mainActivity;
 	}
 	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
-		view = inflater.inflate(layout, null);
-		return view;
+		return mainActivity.getLayoutInflater().inflate(layout, null);
 	}
 }

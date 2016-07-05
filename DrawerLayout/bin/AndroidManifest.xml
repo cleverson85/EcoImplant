@@ -8,6 +8,8 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo"
@@ -24,15 +26,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:name=".AdapterDrawer"
-            android:label="@string/title_activity_main" >
-        </activity>
-        
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.example.videos.VideosActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+        </activity>
+        <activity
+            android:name="com.example.videos.ActivityVideosOuseUseActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+        </activity>
+        <activity
+            android:name="com.example.videos.ActivityVideosReutilizar"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+        </activity>
+        <activity
+            android:name="com.example.jogos.ActivityRabiscos" >
         </activity>
     </application>
 

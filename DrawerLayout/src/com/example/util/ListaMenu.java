@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.TreeMap;
 
 import com.example.drawerlayout.R;
+import com.example.modelo.ListaModelo;
+import com.example.modelo.ListaModeloSub;
+import com.example.modelo.ModeloGeral;
 
 public class ListaMenu {
 	
@@ -19,7 +22,7 @@ public class ListaMenu {
 		grupo.add(new ListaModelo(R.layout.fragment_descarte, R.drawable.ic_descarte, "Descarte"));
 		grupo.add(new ListaModelo(R.layout.fragment_locais, R.drawable.ic_location, "Locais"));
 		grupo.add(new ListaModelo(R.layout.fragment_nreciclavel, R.drawable.ic_naoreciclav, "Não Recicláveis"));
-		grupo.add(new ListaModelo(R.layout.fragment_jogos, R.drawable.ic_jogos, "Jogos"));
+		grupo.add(new ListaModelo(R.layout.activity_desenhar, R.drawable.ic_jogos, "Jogos"));
 		grupo.add(new ListaModelo(R.layout.fragment_reuso, R.drawable.ic_recycle, "Reutilizar"));
 		grupo.add(new ListaModelo(R.layout.fragment_tecnica, R.drawable.ic_gear, "Ass. Técnica"));
 		grupo.add(new ListaModelo(R.layout.fragment_sugest, R.drawable.ic_sugest, "Sugestões"));
@@ -38,59 +41,40 @@ public class ListaMenu {
 			itemGeral = new ArrayList<ModeloGeral>();
 		}
 		
-		itemGeral.add(new ModeloGeral(grupo.get(0), null));
+		itemGeral.add(new ModeloGeral(grupo.get(0), null));		//Home
 		
-		/**
-		 * Add Data For Conscientizar - 1
-		 */
 		item = new ArrayList<ListaModeloSub>();
 		item.add(new ListaModeloSub(R.layout.fragment_artigos, "Artigos"));
-		item.add(new ListaModeloSub(R.layout.fragment_videos, "Videos"));
+		item.add(new ListaModeloSub(R.layout.fragment_videos, "Videos"));	
+		itemGeral.add(new ModeloGeral(grupo.get(1), item));		//Add Data For Conscientizar - 1
 		
-		itemGeral.add(new ModeloGeral(grupo.get(1), item));
-		
-		/**
-		 * Add Data For Descarte - 2
-		 */
 		item = new ArrayList<ListaModeloSub>();
-		item.add(new ListaModeloSub(0, "Como descartar"));
-		item.add(new ListaModeloSub(0, "Descarte Delivery"));
-		item.add(new ListaModeloSub(0, "Reciclando empresas"));
+		item.add(new ListaModeloSub(R.layout.fragment_como_descartar, "Como Descartar"));
+		item.add(new ListaModeloSub(R.layout.fragment_delivery, "Descarte Delivery"));
+		item.add(new ListaModeloSub(R.layout.fragment_rec_empresas, "Reciclando Empresas"));
+		itemGeral.add(new ModeloGeral(grupo.get(2), item));		//Add Data For Descarte - 2
 		
-		itemGeral.add(new ModeloGeral(grupo.get(2), item));
-		
-		/**
-		 * Add Data For Locais - 3
-		 */
+
 		item = new ArrayList<ListaModeloSub>();
-		item.add(new ListaModeloSub(0, "Mapas"));
-		item.add(new ListaModeloSub(0, "Telefones"));
+		//item.add(new ListaModeloSub(R.layout.fragment_mapas, "Mapas"));
+		item.add(new ListaModeloSub(R.layout.fragment_contatos, "Cooperativas"));
+		itemGeral.add(new ModeloGeral(grupo.get(3), item));		//Add Data For Locais - 3
 		
-		itemGeral.add(new ModeloGeral(grupo.get(3), item));
-		
-		/**
-		 * Add Data For Não Recicláveis - 4
-		 */
 		item = new ArrayList<ListaModeloSub>();
-		item.add(new ListaModeloSub(0, "O que fazer?"));
-		item.add(new ListaModeloSub(0, "Como descartar tóxicos?"));
+		item.add(new ListaModeloSub(R.layout.fragment_oq_fazer, "O Que Fazer?"));
+		item.add(new ListaModeloSub(R.layout.fragment_toxicos, "Como Descartar Tóxicos?"));
+		itemGeral.add(new ModeloGeral(grupo.get(4), item));		//Add Data For Não Recicláveis - 4
 		
-		itemGeral.add(new ModeloGeral(grupo.get(4), item));
+		itemGeral.add(new ModeloGeral(grupo.get(5), null));		//Add Data For Jogos - 5
 		
-		itemGeral.add(new ModeloGeral(grupo.get(5), null));
-		
-		/**
-		 * Add Data For Reutilizar - 6
-		 */
 		item = new ArrayList<ListaModeloSub>();
-		item.add(new ListaModeloSub(0, "Por que reutilizar?"));
-		item.add(new ListaModeloSub(0, "Ouse e Use"));
-		item.add(new ListaModeloSub(0, "Videos"));
+		item.add(new ListaModeloSub(R.layout.fragment_pq_reutilizar, "Por Que Reutilizar?"));
+		item.add(new ListaModeloSub(R.layout.fragment_ouse_use, "Ouse e Use"));
+		item.add(new ListaModeloSub(R.layout.fragment_videos_reuse, "Videos"));
+		itemGeral.add(new ModeloGeral(grupo.get(6), item));		//Add Data For Reutilizar - 6
 		
-		itemGeral.add(new ModeloGeral(grupo.get(6), item));
-		
-		itemGeral.add(new ModeloGeral(grupo.get(7), null));
-		itemGeral.add(new ModeloGeral(grupo.get(8), null));
+		itemGeral.add(new ModeloGeral(grupo.get(7), null));		//7 - Ass. Técnica
+		itemGeral.add(new ModeloGeral(grupo.get(8), null));		//8 - Sugestões
 		
 		return itemGeral;
 		

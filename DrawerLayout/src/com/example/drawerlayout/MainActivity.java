@@ -4,23 +4,32 @@ import java.util.ArrayList;
 
 import com.example.adapter.DrawerAdapterAnimated;
 import com.example.fragment.FragmentMain;
+import com.example.jogos.ActivityRabiscos;
+import com.example.modelo.ModeloGeral;
 import com.example.util.ListaMenu;
-import com.example.util.ModeloGeral;
+import com.example.videos.ActivityVideosOuseUseActivity;
+import com.example.videos.ActivityVideosReutilizar;
+import com.example.videos.VideosActivity;
 import com.example.widget.AnimatedExpandableListView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -36,6 +45,28 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+			
+		loadDrawerLayout();
+	}
+	
+	public static void hideSoftKeyboard(Activity activity) {
+	    InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+	    inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		isAtive = true;
+		setFragmentMenu(R.layout.activity_main);
+	}
+	
+	protected void loadDrawerLayout() {
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		listView = (AnimatedExpandableListView) findViewById(R.id.left_drawer);
@@ -66,7 +97,7 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(false); //retira icone da action bar
-        
+                
         listView.setOnGroupClickListener(new OnGroupClickListener() {
         	int groupPositionTemp = 0;
         	
@@ -95,17 +126,17 @@ public class MainActivity extends Activity {
 			}
 		});
         
-//        listView.setOnChildClickListener(new OnChildClickListener() {
-//			
-//			@Override
-//			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//				
-//				ModeloGeral m = (ModeloGeral) listaGeral.get(groupPosition);
-//				Log.i("ciclo", "setOnChildClickListener");
-//				selectedItem(m.getFilho().get(childPosition).getIdLayout());
-//				return true;
-//			}
-//		});
+        listView.setOnChildClickListener(new OnChildClickListener() {
+			
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+				
+				ModeloGeral m = (ModeloGeral) listaGeral.get(groupPosition);
+				selectedItem(m.getFilho().get(childPosition).getIdLayout());
+				
+				return true;
+			}
+		});
 	}
 	
 	protected void selectedItem(int idLayout) {
@@ -121,13 +152,32 @@ public class MainActivity extends Activity {
 		drawerLayout.closeDrawer(listView);
 	}
 
-	private void setFragmentMenu(int position) {
+	private void setFragmentMenu(int idLayout) {
 		android.app.FragmentManager fragTransaction;
 		android.app.Fragment frag;
+		Intent irPara;
 		
-		frag = new FragmentMain(position);
-		fragTransaction = getFragmentManager();
-		fragTransaction.beginTransaction().replace(R.id.content_frame, frag).commit();
+		if(idLayout == R.layout.fragment_videos){
+			irPara = new Intent(MainActivity.this, VideosActivity.class);
+			startActivity(irPara);
+		}
+		else if(idLayout == R.layout.fragment_ouse_use){
+			irPara = new Intent(MainActivity.this, ActivityVideosOuseUseActivity.class);
+			startActivity(irPara);
+		}
+		else if(idLayout == R.layout.fragment_videos_reuse){
+			irPara = new Intent(MainActivity.this, ActivityVideosReutilizar.class);
+			startActivity(irPara);
+		}
+		else if(idLayout == R.layout.activity_desenhar){
+			irPara = new Intent(MainActivity.this, ActivityRabiscos.class);
+			startActivity(irPara);
+		}
+		else {
+			frag = new FragmentMain(idLayout, this);
+			fragTransaction = getFragmentManager();
+			fragTransaction.beginTransaction().replace(R.id.content_frame, frag).commit();
+		}
 	}
 
 	@Override
@@ -154,6 +204,9 @@ public class MainActivity extends Activity {
 				changeIconBurguer(false);
 			}
         }
+		
+		MainActivity.hideSoftKeyboard(this); 	//hide keyboard 
+		
 		return super.onOptionsItemSelected(item);
 	}
 	

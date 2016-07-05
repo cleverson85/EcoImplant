@@ -6,8 +6,8 @@ import java.util.List;
 import com.example.drawerlayout.MainActivity;
 import com.example.drawerlayout.R;
 import com.example.fragment.FragmentMain;
-import com.example.util.ListaModeloSub;
-import com.example.util.ModeloGeral;
+import com.example.modelo.ListaModeloSub;
+import com.example.modelo.ModeloGeral;
 import com.example.widget.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 
 import android.R.color;
@@ -113,25 +113,7 @@ public class DrawerAdapterAnimated extends AnimatedExpandableListAdapter {
 		TextView text = (TextView) view.findViewById(R.id.textView2);
 		text.setText(itemGeral.get(groupPosition).getFilho().get(childPosition).getDescricao());
 		
-		view.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				view.setBackgroundColor(color.transparent);
-				setFragmentMenu(itemGeral.get(groupPosition).getFilho().get(childPosition).getIdLayout());
-			}
-		});
-		
-		view.setBackgroundResource(R.color.group_selected);
 		view.setTag(itemGeral.get(groupPosition).getFilho());
 		return view;
-	}
-	
-	private void setFragmentMenu(int idLayout) {
-		android.app.FragmentManager fragTransaction;
-		android.app.Fragment frag;
-		
-		frag = new FragmentMain(idLayout);
-		fragTransaction = mainActivity.getFragmentManager();
-		fragTransaction.beginTransaction().replace(R.id.content_frame, frag).commit();
 	}
 }
